@@ -47,7 +47,7 @@
     width: 50%;
     height: 50px;
     background-color: red;
-    opacity: .5;
+    opacity: .3;
 }
 
 .green {
@@ -55,7 +55,7 @@
     width: 49%;
     height: 50px;
     background-color: green;
-    opacity: .5;
+    opacity: .3;
 }
 
 .blue {
@@ -63,7 +63,7 @@
     width: 50%;
     height: 50px;
     background-color: blue;
-    opacity: .5;
+    opacity: .3;
 }
 
 .yellow {
@@ -71,5 +71,5 @@
     width: 49%;
     height: 50px;
     background-color: yellow;
-    opacity: .5;
+    opacity: .3;
 }
