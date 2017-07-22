@@ -30,8 +30,14 @@ function nextMove(){
         counter.push(this.id);
         if(counter.length < seq.length) {
             if(parseInt(counter[counter.length - 1]) !== seq[counter.length - 1]) {
-                counter = [];
-                showSeq();
+                $('#score').text('!!');
+                setTimeout(function(){
+                    if(round < 10)
+                        $('#score').text('0' + round);
+                    else $('#score').text(round);
+                    counter = [];
+                    showSeq();
+                }, 1000);
             } else {
                 nextMove();
             }
