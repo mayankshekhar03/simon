@@ -1,26 +1,56 @@
 //stores the current sequence of colors press
-var seq    = [1,2,3,2,1];
+var seq    = [];
 var sounds = ['https://s3.amazonaws.com/freecodecamp/simonSound1.mp3',
               'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
               'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3',
               'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'];
-var count = [];
-var counter = 0;
+var counter = [];
+var strict = false;
 var round = 0;
 
 $(document).ready(function(){
-    $('#start').click(showSeq);
+    $('#start').click(startGame);
 });
 // gets the game started with one sequence and calls a function which handles inputs
 function startGame() {
     round++;
+    if(round < 10)
+        $('#score').text('0' + round);
+    else $('#score').text(round);
     var color = (Math.floor(Math.random() * 4)) + 1;
     seq = [];
-    count = [];
-    counter = 0;
+    counter = [];
+    count = 0;
     seq.push(color);
-    console.log(seq);
     showSeq();
+}
+
+function nextMove(){
+    $('.press').unbind().click(function(){
+        counter.push(this.id);
+        if(counter.length < seq.length) {
+            if(parseInt(counter[counter.length - 1]) !== seq[counter.length - 1]) {
+                counter = [];
+                showSeq();
+            } else {
+                nextMove();
+            }
+        } else if (counter.length === seq.length) {
+            if (counter[-1] == seq[-1]){
+                round++;
+                if(round < 10)
+                    $('#score').text('0' + round);
+                else $('#score').text(round);
+                var color = (Math.floor(Math.random() * 4)) + 1;
+                seq.push(color);
+                counter = [];
+                showSeq();
+            }
+        } else {
+            counter = [];
+            showSeq();
+        }
+    });
 }
 
 function showSeq() {
@@ -29,6 +59,7 @@ function showSeq() {
         toOpac(id, i, seq[i]);
         toTrans(id, i+1);
     }
+    nextMove();
 }
 
 //helper functions
@@ -37,7 +68,6 @@ function toOpac(id, i, s){
     setTimeout(function() {$(id).css('opacity', '1');
                            new Audio(sounds[s]).play();}, timeout);
 }
-
 function toTrans(id, i){
     var timeout = i*650;
     setTimeout(function() {opacity(id);}, timeout);
