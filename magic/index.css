@@ -1,0 +1,75 @@
+#main {
+    margin: auto;
+    width: 472px;
+    margin-top: 10%;
+}
+
+#options {
+    padding: 10px;
+    overflow: auto;
+    position: relative;
+    background-color: azure;
+}
+
+#options > div {
+    display: inline-block;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 20%;
+    color: red;
+    background-color: black;
+    font-weight: bold;
+    border: 3px solid;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#options > button {
+    position: absolute;
+    float: right;
+    margin: 2px;
+}
+
+#strict {
+    right: 10px;
+    top: 10px;
+    padding: 7px;
+}
+
+#start {
+    right: 70px;
+    top: 10px;
+    padding: 7px;
+}
+
+.red {
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    background-color: red;
+    opacity: .5;
+}
+
+.green {
+    display: inline-block;
+    width: 49%;
+    height: 50px;
+    background-color: green;
+    opacity: .5;
+}
+
+.blue {
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    background-color: blue;
+    opacity: .5;
+}
+
+.yellow {
+    display: inline-block;
+    width: 49%;
+    height: 50px;
+    background-color: yellow;
+    opacity: .5;
+}
