@@ -42,6 +42,12 @@
     padding: 7px;
 }
 
+#reset {
+    right: 130px;
+    top: 10px;
+    padding: 7px;
+}
+
 .red {
     display: inline-block;
     width: 50%;
@@ -72,4 +78,20 @@
     height: 50px;
     background-color: yellow;
     opacity: .3;
+}
+
+.red:active{
+    opacity: 1;
+}
+
+.green:active{
+    opacity: 1;
+}
+
+.blue:active{
+    opacity: 1;
+}
+
+.yellow:active{
+    opacity: 1;
 }

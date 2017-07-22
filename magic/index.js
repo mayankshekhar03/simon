@@ -9,7 +9,20 @@ var strict = false;
 var round = 0;
 
 $(document).ready(function(){
+    $('#reset').click(function(){
+        location.reload();
+    });
     $('#start').click(startGame);
+    $('#strict').click(function(){
+        if(strict === true)
+            strict = false;
+        else
+            strict = true;
+        if(strict === true)
+            $(this).css('background-color', 'red');
+        else
+            $(this).css('background-color', 'white');
+    });
 });
 // gets the game started with one sequence and calls a function which handles inputs
 function startGame() {
@@ -30,19 +43,26 @@ function nextMove(){
         counter.push(this.id);
         if(counter.length < seq.length) {
             if(parseInt(counter[counter.length - 1]) !== seq[counter.length - 1]) {
-                $('#score').text('!!');
-                setTimeout(function(){
-                    if(round < 10)
-                        $('#score').text('0' + round);
-                    else $('#score').text(round);
+                if (strict === true) {
                     counter = [];
-                    showSeq();
-                }, 1000);
+                    round = 0;
+                    seq = [];
+                    startGame();
+                }else{
+                    $('#score').text('!!');
+                    setTimeout(function(){
+                        if(round < 10)
+                            $('#score').text('0' + round);
+                        else $('#score').text(round);
+                        counter = [];
+                        showSeq();
+                    }, 1000);
+                }
             } else {
                 nextMove();
             }
         } else if (counter.length === seq.length) {
-            if (counter[-1] == seq[-1]){
+            if (parseInt(counter[counter.length - 1]) == seq[counter.length - 1]){
                 round++;
                 if(round < 10)
                     $('#score').text('0' + round);
@@ -53,8 +73,15 @@ function nextMove(){
                 showSeq();
             }
         } else {
-            counter = [];
-            showSeq();
+            if (strict === true) {
+                    counter = [];
+                    seq = [];
+                    round = 0;
+                    startGame();
+            }else{
+                counter = [];
+                showSeq();
+            }
         }
     });
 }
