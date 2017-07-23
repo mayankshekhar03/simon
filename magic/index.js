@@ -39,7 +39,7 @@ function startGame() {
 }
 
 function nextMove(){
-    $('.press').unbind().click(function(){
+    $('.press').unbind().one('click', function(){
         counter.push(this.id);
         if(counter.length < seq.length) {
             if(parseInt(counter[counter.length - 1]) !== seq[counter.length - 1]) {
@@ -71,16 +71,22 @@ function nextMove(){
                 seq.push(color);
                 counter = [];
                 showSeq();
-            }
-        } else {
-            if (strict === true) {
-                    counter = [];
-                    seq = [];
-                    round = 0;
-                    startGame();
-            }else{
-                counter = [];
-                showSeq();
+            } else {
+                if (strict === true) {
+                        counter = [];
+                        seq = [];
+                        round = 0;
+                        startGame();
+                }else{
+                    $('#score').text('!!');
+                    setTimeout(function(){
+                        if(round < 10)
+                            $('#score').text('0' + round);
+                        else $('#score').text(round);
+                        counter = [];
+                        showSeq();
+                    }, 1000);
+                }
             }
         }
     });
@@ -92,7 +98,7 @@ function showSeq() {
         toOpac(id, i, seq[i]);
         toTrans(id, i+1);
     }
-    nextMove();
+    setTimeout(nextMove, 700*seq.length);
 }
 
 //helper functions

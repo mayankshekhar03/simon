@@ -50,7 +50,7 @@
 
 .red {
     display: inline-block;
-    width: 50%;
+    width: 235px;
     height: 50px;
     background-color: red;
     opacity: .3;
@@ -58,7 +58,7 @@
 
 .green {
     display: inline-block;
-    width: 49%;
+    width: 233px;
     height: 50px;
     background-color: green;
     opacity: .3;
@@ -66,7 +66,7 @@
 
 .blue {
     display: inline-block;
-    width: 50%;
+    width: 235px;
     height: 50px;
     background-color: blue;
     opacity: .3;
@@ -74,7 +74,7 @@
 
 .yellow {
     display: inline-block;
-    width: 49%;
+    width: 233px;
     height: 50px;
     background-color: yellow;
     opacity: .3;
